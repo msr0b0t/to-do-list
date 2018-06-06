@@ -1,0 +1,23 @@
+html
+  head
+    title= title
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous")
+  body
+    div(class="jumbotron jumbotron-fluid")
+      div(class="container")
+        h1(class="display-3")=message
+        ul(class="list-group")
+          each item in itemslist
+            div
+              li(style='display: inline-block;')= item
+              form(action=("/" + user + '/delete') method="POST" style='display: inline-block;')
+                input(type='hidden' name='delItem' value=item)
+                button(type='submit' class='btn btn-outline-primary btn-sm' style='margin-left: 15px') Remove
+        form(action=("/" + user) method="POST")
+          div(class="form-group form-row align-items-center")
+            div(class='col-auto')
+              input(type="text" class="form-control mb-2" id="item" placeholder="New Item" name="item" required)
+            div(class='col-auto')
+              button(type='submit' class='btn btn-primary mb-2' style='margin-left: 15px') Add
+        form(action=("/logout") method="GET")
+          button(type='submit' class='btn btn-primary') Logout
