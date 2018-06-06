@@ -18,10 +18,8 @@ UserSchema.pre('save', function (next) {
 	});
 });
 
-const User = mongoose.model('User', UserSchema);
-
 UserSchema.statics.authenticate = function (email, password, callback) {
-	User.findOne({email}).exec((err, user) => {
+	this.model('User').findOne({email}).exec((err, user) => {
 		if (err) {
 			return callback(err);
 		}
@@ -39,4 +37,4 @@ UserSchema.statics.authenticate = function (email, password, callback) {
 	});
 };
 
-module.exports = User;
+module.exports = mongoose.model('User', UserSchema);;
