@@ -131,7 +131,7 @@ app.post('/:user/delete', requiresLogin, (req, res) => {
 	}).catch(err);
 });
 
-const server = app.listen(3000, () => {
+const server = app.listen(process.env.PORT, () => {
 	const {port} = server.address();
 
 	console.log('Example app listening at http://localhost:%s', port);
